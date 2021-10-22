@@ -1,5 +1,11 @@
+
 from Cpf import Cpf
 
-cpf = 50456925125
 
-criando_objeto = Cpf(cpf)
+#Testes das classes do arquivo
+
+
+cpf = Cpf("05456925125")
+print(cpf)
+
+
