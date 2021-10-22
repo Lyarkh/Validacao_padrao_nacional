@@ -34,8 +34,7 @@ class Cnpj(Documento):
             validate_cnpj = CNPJ()
             return validate_cnpj.validate(documento)
     
-
-    def  formata(self):
+    def formata(self):
         mascara = CNPJ()
         return mascara.mask(self.cnpj)   
         
