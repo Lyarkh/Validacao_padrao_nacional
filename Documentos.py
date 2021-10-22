@@ -3,47 +3,54 @@ from abc import ABCMeta, abstractmethod
 
 class Documento(metaclass = ABCMeta):
 
+    @staticmethod
+    def cria_documento(documento):
+        if len(documento) == 11:
+            return Cpf(documento)
+        elif len(documento) == 14:
+            return Cnpj(documento)
+        else:
+            raise ValueError("Quantidade de números inválida!!")
+
     def __str__(self):
         return self.formata()
 
+    @abstractmethod
+    def eh_valido(self, documento):
+        pass
     @abstractmethod
     def formata(self):
         pass
 
 class Cnpj(Documento):
     def __init__(self, documento):
-        documento = str(documento)
-        if self.cnpj_eh_valido(documento):
+        if self.eh_valido(documento):
             self.cnpj = documento
         else:
             raise ValueError("CNPJ inválido!!")  
 
-    def cnpj_eh_valido(self, cnpj):
-        if len(cnpj)==14:
+    def eh_valido(self, documento):
+        if len(documento)==14:
             validate_cnpj = CNPJ()
-            return validate_cnpj.validate(cnpj)
-
-        else:
-            raise ValueError("Quantidade de dígitos inválida!")
+            return validate_cnpj.validate(documento)
+    
 
     def  formata(self):
-        return self.cnpj
+        mascara = CNPJ()
+        return mascara.mask(self.cnpj)   
         
 class Cpf(Documento):
 
     def __init__(self, documento):
-        documento = str(documento)
-        if self.cpf_eh_valido(documento):
+        if self.eh_valido(documento):
             self.cpf = documento
         else:
             raise ValueError("CPF inválido!!")
 
-    def cpf_eh_valido(self, cpf):
+    def eh_valido(self, cpf):
         if len(cpf) == 11:
             validando = CPF()
             return validando.validate(cpf)
-        else:
-            raise ValueError("Quantidade de dígitos inválido!!")
 
     def formata(self):
         mascara = CPF()
