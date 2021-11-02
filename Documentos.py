@@ -32,8 +32,8 @@ class Cnpj(Documento):
     def eh_valido(self, documento):
         if len(documento)==14:
             validate_cnpj = CNPJ()
-            return validate_cnpj.validate(documento)
-    
+            return validate_cnpj.validate(documento) 
+
     def formata(self):
         mascara = CNPJ()
         return mascara.mask(self.cnpj)   
