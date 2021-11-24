@@ -25,3 +25,4 @@ print(numero) """
 cadastro = DatasBR()
 
 print(cadastro.dia_da_semana())
+print (cadastro)
