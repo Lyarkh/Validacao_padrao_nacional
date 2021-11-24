@@ -25,5 +25,7 @@ cadastro = DatasBR()
 print(cadastro.dia_da_semana())
 print (cadastro) """
 
-cep = BuscaEndereco(72506402)
+""" cep = BuscaEndereco(72405550)
 print(cep)
+
+print(cep.acessa_via_cep()) """
